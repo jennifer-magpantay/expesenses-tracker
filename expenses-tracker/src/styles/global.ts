@@ -1,78 +1,27 @@
 import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
-/* global variables */
 :root {
-    /* colors */
-    --color-primary: #24C59B;
+    --color-primary: #1ea481;
+    --color-primary-lg: #24c79c;
+    --color-primary-dk: #147058;
+
     --color-secundary: #0040AE;
+    --color-secundary-lg: #0088DF;
+
     --color-error: #CC6032;
     --color-accent: #535A94;
     --color-gray: #737496;
+    --color-gray-dk: #474968;
 
     --color-black: #000a09;
     --color-white: #ffffff;
     --color-background: #EEEDFF;
 
-    /* fonts */
-h1 {
-  font-size: clamp(4rem, 5vw, 5rem);
-  font-weight: 600;
-  text-align: center;
-}
-
-h2 {
-  font-size: clamp(3.2rem, 5vw, 4rem);
-  font-weight: 600;
-}
-
-h3 {
-  font-size: clamp(2.5rem, 4vw, 3.2rem);
-  font-weight: 600;
-}
-
-h4 {
-  font-size: clamp(2rem, 3vw, 2.5rem);
-  font-weight: 400;
-}
-
-h5 {
-  font-size: clamp(1.6rem, 3vw, 2rem);
-  font-weight: 400;
-}
-
-h6 {
-  font-size: clamp(1.4rem, 2vw, 1.6rem);
-  font-weight: 400;
-  text-transform: uppercase;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    font-family: 'Popins', Arial, Helvetica, sans-serif;
-    color: var(---color-black);
-}
-
-p,
-button,
-input,
-select,
-option,
-span,
-label,
-li {
-  color: var(---color-black);
-  font-family: 'Roboto', Arial, Helvetica, sans-serif;
-  font-size: clamp(1.4rem, 2vw, 1.6rem);
-  font-weight: 400;
-}
-    /* mix */
-    --padding: 2rem 6%;
-
+    --padding: 2rem 6.33%;
+    --box-shadow: 0px 5px 5px -5px rgba(0, 0, 0, 0.25);
+    --border: 01px solid var(--color-gray);
+    --border-radius: 4px;
 }
 
 /* reset */
@@ -146,18 +95,33 @@ select {
   }
 }
 
-/* global styles */
 html {
     font-size: 62.5%;
 }
 
 body {
     background-color: var(--color-background);
-    -webkit-font-smoothing: antialiased;
+    -webkit-font-smoothing: antialiased;color: var(---color-black);
+    font-family: 'Roboto', Arial, Helvetica, sans-serif;     
 }
 
 [disabled]{
     opacity: 0.5;
     cursor: not-allowed;
+}
+
+p,
+button,
+input,
+select,
+option,
+label,
+li,
+span{ 
+  font-size: clamp(1.4rem, 2vw, 1.6rem);
+}
+
+span {
+  font-family: 'Poppins'
 }
 `;

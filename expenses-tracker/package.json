@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "axios": "^0.25.0",
+    "miragejs": "^0.1.43",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-scripts": "5.0.0",
@@ -17,7 +19,9 @@
     "@types/node": "^16.11.22",
     "@types/react": "^17.0.39",
     "@types/react-dom": "^17.0.11",
+    "@types/react-modal": "^3.13.1",
     "@types/styled-components": "^5.1.21",
+    "react-modal": "^3.14.4",
     "typescript": "^4.5.5"
   },
   "scripts": {
