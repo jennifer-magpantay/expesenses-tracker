@@ -118,14 +118,13 @@ body {
     cursor: not-allowed;
 }
 
-button {
-    /* display: block; */
+/* button {
     padding: 1.25rem 3rem;
     border: none;    
     cursor: pointer;
     font-weight: 500;
     transition: all 0.5s ease;
-}
+} */
 
 p,
 button,
@@ -136,6 +135,22 @@ label,
 li,
 span{ 
   font-size: clamp(1.4rem, 2vw, 1.6rem);
+}
+
+/* icons */
+.icon-close {
+     width: 1.6rem;
+     filter: var(--svg-color-gray);
+
+     &:hover, &:focus {
+    
+        filter:  var(--svg-color-gray-lg);    
+     }
+   }   
+
+.icon-income, .icon-outcome{
+  width: 2rem;
+      margin-right: 01rem;
 }
 
 .icon-income{
@@ -157,8 +172,8 @@ span{
     color: var(--color-gray-dk);
   }
 
-  // modal
-.modal--overlay{
+/* modal */
+  .modal--overlay{
   display: flex;
   align-items: center;
   justify-content: center;
@@ -176,26 +191,6 @@ span{
   margin-inline: auto;
   padding: 02rem 01rem;
   background: var(--color-white);
-  box-shadow: var(--box-shadow);
-
-  .button--modal-close {
-    position: absolute;
-   top: 4rem;
-   right: 5rem;
-   padding: unset;
-   background: transparent;
-   color: var(--color-gray); 
-   box-shadow: unset;  
-
-   img {
-     width: 1.6rem;
-     filter: var(--svg-color-gray);
-   }
-
-   &:hover, &:focus {
-     img {
-        filter:  var(--svg-color-gray-lg);
-      }
-  }
+  box-shadow: var(--box-shadow);    
 }
 `;

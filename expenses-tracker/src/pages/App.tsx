@@ -7,6 +7,7 @@ import { NewTransactionsModal } from "../components/newTransactionsModal/NewTran
 import { Table } from "../components/transactionsTable/TransactionsTable";
 import Modal from "react-modal";
 
+// https://github.com/reactjs/react-modal
 Modal.setAppElement("#root");
 
 export const App = () => {

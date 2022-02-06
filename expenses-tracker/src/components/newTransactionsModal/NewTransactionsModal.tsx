@@ -1,10 +1,13 @@
-import React, {FormEvent, useState} from "react";
-import {api } from '../services/api';
+import React, { FormEvent, useState } from "react";
+import { ThemeProvider } from "styled-components";
+import { api } from "../../services/api";
 import Modal from "react-modal";
-import { ModalForm, ModalTypeContainer} from "./_newTransactionsModal";
-import closeIcon from '../../assets/close-icon.svg';
-import incomeIcon from '../../assets/income-icon.svg';
-import outcomeIcon from '../../assets/outcome-icon.svg';
+import { ModalForm, ModalTypeContainer } from "./_newTransactionsModal";
+import closeIcon from "../../assets/close-icon.svg";
+import incomeIcon from "../../assets/income-icon.svg";
+import outcomeIcon from "../../assets/outcome-icon.svg";
+import { btnClose, btnType, cta } from "../button/_button";
+import { Button } from "../button/Button";
 
 interface NewTransactionsModalProps {
   isOpen: boolean;
@@ -15,59 +18,98 @@ export const NewTransactionsModal = ({
   isOpen,
   onRequestClose,
 }: NewTransactionsModalProps) => {
+  const [title, setTitle] = useState("");
+  const [amount, setAmount] = useState(0);
+  const [type, setType] = useState("");
+  const [category, setCategory] = useState("");
+  const [date, setDate] = useState(new Date());
 
-  const [title, setTitle] = useState('');
-  const[amount, setAmount] = useState(0);
-  const [type, setType]= useState('');
-  const [category, setCategory]= useState('');
-  const [date, setDate] =useState(new Date());
-
-  function handleFormSubmit(event: FormEvent){
+  function handleFormSubmit(event: FormEvent) {
     event.preventDefault();
-
-    const data = {title, amount, type, category, date};
-    api.post('/transactions', data);
-
-    setTitle('');
+    // save user input into data obj
+    const data = { title, amount, type, category, date };
+    // call the api to post the content
+    api.post("/transactions", data);
+    // reset the input to its initial value
+    setTitle("");
     setAmount(0);
-    setType('');
-    setCategory('');
+    setType("");
+    setCategory("");
+    // close modal?
   }
 
   return (
     <Modal
       isOpen={isOpen}
       onRequestClose={onRequestClose}
+      contentLabel="Register new transaction form"
       overlayClassName="modal--overlay"
       className="modal--content"
     >
-
-    <button type="button" className="button--modal-close" onClick={onRequestClose}>
-      <img src={closeIcon} alt='closing button'/>
-    </button>
+      <ThemeProvider theme={btnClose}>
+        <Button
+          type="button"
+          style={{ position: "absolute", top: "4rem", right: "5rem" }}
+          buttonOnClick={onRequestClose}
+        >
+          <img src={closeIcon} alt="closing button" className="icon-close"/>
+        </Button>
+      </ThemeProvider>
 
       <ModalForm onSubmit={handleFormSubmit}>
-          <span className="title">New Transaction</span>
+        <span className="title">New Transaction</span>
         <label htmlFor="title">Title</label>
-        <input type="text" name="title" id="title" value={title} onChange={event => setTitle(event.target.value)}/>
+        <input
+          type="text"
+          name="title"
+          id="title"
+          value={title}
+          onChange={(event) => setTitle(event.target.value)}
+        />
 
         <label htmlFor="amount">Amount</label>
-        <input type="number" name="amount" id="amount" value={amount} onChange={event => setAmount(Number(event.target.value))}/>
+        <input
+          type="number"
+          name="amount"
+          id="amount"
+          value={amount}
+          onChange={(event) => setAmount(Number(event.target.value))}
+        />
 
         <ModalTypeContainer>
-           <button type="button" className='modal--button-type' onClick={()=> setType('income')}>
-      <img src={incomeIcon} alt='Income' className='icon-income'/>Income
-    </button>
+          <ThemeProvider theme={btnType}>
+            <Button
+              type="button"
+              style={{ alignItems: "center", justifyContent: "center" }}
+              buttonOnClick={() => setType("income")}
+            >
+              <img src={incomeIcon} alt="Income" className="icon-income" />
+              Income
+            </Button>
+          </ThemeProvider>
 
-     <button type="button" className='modal--button-type' onClick={()=> setType('outcome')}>
-      <img src={outcomeIcon} alt='Outcome' className='icon-outcome'/>Outcome
-    </button>
+          <ThemeProvider theme={btnType}>
+            <Button type="button" buttonOnClick={() => setType("outcome")}>
+              <img src={outcomeIcon} alt="Outcome" className="icon-outcome" />
+              Income
+            </Button>
+          </ThemeProvider>
         </ModalTypeContainer>
 
         <label htmlFor="category">Category</label>
-        <input type="text" name="category" id="category" value={category} onChange={event => setCategory(event.target.value)}/>
+        <input
+          type="text"
+          name="category"
+          id="category"
+          value={category}
+          onChange={(event) => setCategory(event.target.value)}
+        />
 
-        <button type="submit" className='form--button-submit'>REGISTER</button>
+        <ThemeProvider theme={cta}>
+          <Button type="submit" style={{ width: "100%" }}>
+            REGISTER
+          </Button>
+        </ThemeProvider>
       </ModalForm>
     </Modal>
   );
