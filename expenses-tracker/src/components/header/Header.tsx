@@ -9,7 +9,7 @@ export const Header = ({ onClickOpenModal }: HeaderProps) => {
     <HeaderContainer>
       <HeaderContainerContent>
         <img src={logoSvg} alt="Logo Ipsum" />
-        <button type="button" onClick={onClickOpenModal}>
+        <button type="button" className='header--button' onClick={onClickOpenModal}>
           ADD TRANSACTION +
         </button>
       </HeaderContainerContent>

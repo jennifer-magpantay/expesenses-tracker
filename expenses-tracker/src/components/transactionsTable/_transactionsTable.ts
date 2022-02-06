@@ -8,10 +8,6 @@ export const TableContainer = styled.table`
   font-size: clamp(1.4rem, 2vw, 1.6rem);
   text-align: left;
 
-  thead,
-  tbody {
-  }
-
   thead {
     color: var(--color-gray-dk);
     font-family: "Poppins", Arial, Helvetica, sans-serif;

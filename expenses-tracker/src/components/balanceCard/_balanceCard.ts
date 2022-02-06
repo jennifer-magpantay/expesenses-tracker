@@ -9,11 +9,7 @@ export const BalanceContainer = styled.div`
 export const BalanceCard = styled.div`
   width: 32%;
   padding: 2rem;
-  background: var(--color-white);
-
-  span {
-    color: var(--color-gray-dk);
-  }
+  background: var(--color-white);  
 
   .amount {
     font-size: clamp(2.5rem, 4vw, 3.2rem);
@@ -22,7 +18,7 @@ export const BalanceCard = styled.div`
 
   &:last-child {
     background: var(--color-primary);
-    
+
     span {
       color: var(--color-white);
     }
@@ -37,5 +33,9 @@ export const BalanceCardHeader = styled.div`
 
   .title {
     font-weight: 700;
+  }
+
+  img {
+    width: clamp(2rem, 4vw, 2.8rem);
   }
 `;

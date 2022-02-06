@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { api } from "../../services/api";
-import { TableContainer } from "./_transactions";
+import { TableContainer } from "./_transactionsTable";
 
 export const Table = () => {
   // load server with transactions once the app is loaded

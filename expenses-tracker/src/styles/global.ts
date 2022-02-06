@@ -12,6 +12,7 @@ export const GlobalStyle = createGlobalStyle`
     --color-error: #CC6032;
     --color-accent: #535A94;
     --color-gray: #737496;
+    --color-gray-lg: #f2f2f2;
     --color-gray-dk: #474968;
 
     --color-black: #000a09;
@@ -22,6 +23,13 @@ export const GlobalStyle = createGlobalStyle`
     --box-shadow: 0px 5px 5px -5px rgba(0, 0, 0, 0.25);
     --border: 01px solid var(--color-gray);
     --border-radius: 4px;
+
+    --svg-color-primary: invert(52%) sepia(53%) saturate(609%) hue-rotate(114deg) brightness(90%) contrast(86%);
+    --svg-color-error: invert(38%) sepia(96%) saturate(587%) hue-rotate(337deg) brightness(94%) contrast(84%);
+    --svg-color-white: invert(100%) sepia(0%) saturate(7447%) hue-rotate(77deg)
+      brightness(106%) contrast(101%);
+    --svg-color-gray: invert(55%) sepia(2%) saturate(4948%) hue-rotate(200deg) brightness(84%) contrast(111%);
+    --svg-color-gray-lg: invert(100%) sepia(43%) saturate(69%) hue-rotate(47deg) brightness(111%) contrast(90%);
 }
 
 /* reset */
@@ -110,6 +118,15 @@ body {
     cursor: not-allowed;
 }
 
+button {
+    /* display: block; */
+    padding: 1.25rem 3rem;
+    border: none;    
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.5s ease;
+}
+
 p,
 button,
 input,
@@ -121,7 +138,64 @@ span{
   font-size: clamp(1.4rem, 2vw, 1.6rem);
 }
 
-span {
-  font-family: 'Poppins'
+.icon-income{
+  filter: var(--svg-color-primary);
+}
+
+.icon-outcome {
+  filter: var(--svg-color-error);
+}
+
+.icon-money {
+  filter: var(--svg-color-white);
+}
+
+.title {
+    font-size: clamp(1.6rem, 4vw, 2rem);
+    font-family: 'Poppins', Arial, sans-serif;
+    font-weight: 700;
+    color: var(--color-gray-dk);
+  }
+
+  // modal
+.modal--overlay{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0,0,0,0.5);
+}
+
+.modal--content{
+  width: 50%;
+  position: relative;
+  margin-inline: auto;
+  padding: 02rem 01rem;
+  background: var(--color-white);
+  box-shadow: var(--box-shadow);
+
+  .button--modal-close {
+    position: absolute;
+   top: 4rem;
+   right: 5rem;
+   padding: unset;
+   background: transparent;
+   color: var(--color-gray); 
+   box-shadow: unset;  
+
+   img {
+     width: 1.6rem;
+     filter: var(--svg-color-gray);
+   }
+
+   &:hover, &:focus {
+     img {
+        filter:  var(--svg-color-gray-lg);
+      }
+  }
 }
 `;

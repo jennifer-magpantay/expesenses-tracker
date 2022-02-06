@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { Balance } from "../components/balance/Balance";
+import { GlobalStyle } from "../styles/global";
+import { Balance } from "../components/balanceCard/BalanceCard";
 import { Header } from "../components/header/Header";
 import { Main } from "../components/main/Main";
-import { Table } from "../components/transactions/Transactions";
-import { GlobalStyle } from "../styles/global";
+import { NewTransactionsModal } from "../components/newTransactionsModal/NewTransactionsModal";
+import { Table } from "../components/transactionsTable/TransactionsTable";
 import Modal from "react-modal";
 
 Modal.setAppElement("#root");
@@ -27,9 +28,10 @@ export const App = () => {
         <Balance />
         <Table />
       </Main>
-      <Modal isOpen={isModalOpen} onRequestClose={handleClickCloseModal}>
-        <h2>LOREM LOREM</h2>
-      </Modal>
+      <NewTransactionsModal
+        isOpen={isModalOpen}
+        onRequestClose={handleClickCloseModal}
+      />
     </>
   );
 };
