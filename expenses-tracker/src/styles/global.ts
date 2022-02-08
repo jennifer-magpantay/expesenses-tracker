@@ -165,6 +165,25 @@ span{
   filter: var(--svg-color-white);
 }
 
+ .income {
+      color: var(--color-primary);
+    }
+
+    .income::before{
+       content: "+";
+    margin-right: 6px;
+    }
+
+    .outcome {
+      color: var(--color-error);
+       }
+
+      .outcome::before {
+        content: "-";
+    margin-right: 6px;
+      }
+   
+
 .title {
     font-size: clamp(1.6rem, 4vw, 2rem);
     font-family: 'Poppins', Arial, sans-serif;

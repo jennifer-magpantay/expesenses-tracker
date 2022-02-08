@@ -1,13 +1,15 @@
-import React, { FormEvent, useState } from "react";
+import React, { FormEvent, useState, useContext } from "react";
 import { ThemeProvider } from "styled-components";
-import { api } from "../../services/api";
-import Modal from "react-modal";
-import { ModalForm, ModalTypeContainer } from "./_newTransactionsModal";
+
 import closeIcon from "../../assets/close-icon.svg";
 import incomeIcon from "../../assets/income-icon.svg";
 import outcomeIcon from "../../assets/outcome-icon.svg";
+
+import Modal from "react-modal";
+import { ModalForm, ModalTypeContainer } from "./_newTransactionsModal";
 import { btnClose, btnType, cta } from "../button/_button";
 import { Button } from "../button/Button";
+import { TransactionsContext } from "../../context/TransactionsContext";
 
 interface NewTransactionsModalProps {
   isOpen: boolean;
@@ -18,24 +20,27 @@ export const NewTransactionsModal = ({
   isOpen,
   onRequestClose,
 }: NewTransactionsModalProps) => {
+  const { addNewTransaction } = useContext(TransactionsContext);
+
   const [title, setTitle] = useState("");
   const [amount, setAmount] = useState(0);
   const [type, setType] = useState("");
   const [category, setCategory] = useState("");
-  const [date, setDate] = useState(new Date());
 
-  function handleFormSubmit(event: FormEvent) {
+  async function handleFormSubmit(event: FormEvent) {
     event.preventDefault();
-    // save user input into data obj
-    const data = { title, amount, type, category, date };
-    // call the api to post the content
-    api.post("/transactions", data);
-    // reset the input to its initial value
+    // call context to add a new transactions
+    await addNewTransaction({ title, amount, type, category });
+    // id and date generate by miragejs
+
+    // reset the input to its initial value just after if the insertion is successfull
     setTitle("");
     setAmount(0);
     setType("");
     setCategory("");
-    // close modal?
+
+    // close modal
+    onRequestClose();
   }
 
   return (
@@ -52,7 +57,7 @@ export const NewTransactionsModal = ({
           style={{ position: "absolute", top: "4rem", right: "5rem" }}
           buttonOnClick={onRequestClose}
         >
-          <img src={closeIcon} alt="closing button" className="icon-close"/>
+          <img src={closeIcon} alt="closing button" className="icon-close" />
         </Button>
       </ThemeProvider>
 
@@ -91,7 +96,7 @@ export const NewTransactionsModal = ({
           <ThemeProvider theme={btnType}>
             <Button type="button" buttonOnClick={() => setType("outcome")}>
               <img src={outcomeIcon} alt="Outcome" className="icon-outcome" />
-              Income
+              Outcome
             </Button>
           </ThemeProvider>
         </ModalTypeContainer>
