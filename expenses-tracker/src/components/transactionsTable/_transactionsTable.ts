@@ -17,10 +17,24 @@ export const TableContainer = styled.table`
     background: var(--color-white);
     color: var(--color-gray);
     font-family: "Roboto", Arial, Helvetica, sans-serif;
+
+    & > tr td:last-child {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    /* & > tr:hover td {
+      background: red;
+    } */
   }
 
   th,
   td {
-    padding: 1rem 0 1rem 2rem;
+    padding: 1rem;
+    
+    @media (min-width: 600px) {
+      padding: 1rem 2rem;
+    }
   }
 `;

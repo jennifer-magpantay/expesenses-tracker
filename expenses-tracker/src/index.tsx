@@ -7,40 +7,24 @@ createServer({
   models: {
     transaction: Model,
   },
-  // seeds(server) {
-  //   server.db.loadData({
-  //     transactions: [
-  //       {
-  //         id: 1,
-  //         title: "Mobile phone",
-  //         amount: 350,
-  //         type: "outcome",
-  //         category: "shopping",
-  //         date: new Date(),
-  //       },
-  //     ],
-  //   });
-  // },
   routes() {
     this.namespace = "api";
     this.get("/transactions", () => {
       return this.schema.all("transaction");
-      // [
-      //   {
-      //     id: 1,
-      //     title: "xxx",
-      //     amount: 500,
-      //     type: "income",
-      //     category: "home",
-      //     dateCreated: new Date(),
-      //   }
-      // ];
     });
 
     this.post("/transactions", (schema, request) => {
       const data = JSON.parse(request.requestBody);
       return schema.create("transaction", data);
     });
+
+    /*
+    // TODO: find solution to delete through schema
+    this.delete("/transactions/:id", (schema, request) => {
+      let id = request.params.id; //OUTPUT ':id', not the proper id number
+      return schema.transactions.find(id).destroy(); //DOES NOT WORK
+    });
+    */
   },
 });
 

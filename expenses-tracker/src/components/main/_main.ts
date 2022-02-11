@@ -2,5 +2,5 @@ import styled from "styled-components";
 
 export const MainContainer = styled.main`
   padding: var(--padding);
-  margin-top: -5rem;
+  margin-top: -10rem;
 `;

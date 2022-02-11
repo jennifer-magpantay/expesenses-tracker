@@ -16,11 +16,16 @@ Set a React app using create-react-app, understanding TyspeScript fundamentals, 
 
 ## Status
 
-In progress.
+Finished.
 
 ## Features
 
 - Register, categorize and delete expenses.
+
+## TODO
+
+- Refactor code to display balance amount on cards;
+- Fix type bug on delete schema from Miragejs.
 
 ## Author
 

@@ -1,4 +1,4 @@
-import React, { FormEvent, useState, useContext } from "react";
+import { FormEvent, useState } from "react";
 import { ThemeProvider } from "styled-components";
 
 import closeIcon from "../../assets/close-icon.svg";
@@ -9,7 +9,7 @@ import Modal from "react-modal";
 import { ModalForm, ModalTypeContainer } from "./_newTransactionsModal";
 import { btnClose, btnType, cta } from "../button/_button";
 import { Button } from "../button/Button";
-import { TransactionsContext } from "../../context/TransactionsContext";
+import { useTransactions } from "../../hooks/useTransactions";
 
 interface NewTransactionsModalProps {
   isOpen: boolean;
@@ -20,7 +20,8 @@ export const NewTransactionsModal = ({
   isOpen,
   onRequestClose,
 }: NewTransactionsModalProps) => {
-  const { addNewTransaction } = useContext(TransactionsContext);
+  // const { addNewTransaction } = useContext(TransactionsContext);
+  const { addNewTransaction } = useTransactions();
 
   const [title, setTitle] = useState("");
   const [amount, setAmount] = useState(0);
@@ -54,7 +55,7 @@ export const NewTransactionsModal = ({
       <ThemeProvider theme={btnClose}>
         <Button
           type="button"
-          style={{ position: "absolute", top: "4rem", right: "5rem" }}
+          style={{ position: "absolute", top: "4rem", right: "clamp(1rem, 2vw, 5rem" }}
           buttonOnClick={onRequestClose}
         >
           <img src={closeIcon} alt="closing button" className="icon-close" />
@@ -70,6 +71,7 @@ export const NewTransactionsModal = ({
           id="title"
           value={title}
           onChange={(event) => setTitle(event.target.value)}
+          required
         />
 
         <label htmlFor="amount">Amount</label>
@@ -79,6 +81,7 @@ export const NewTransactionsModal = ({
           id="amount"
           value={amount}
           onChange={(event) => setAmount(Number(event.target.value))}
+          required
         />
 
         <ModalTypeContainer>
@@ -94,7 +97,11 @@ export const NewTransactionsModal = ({
           </ThemeProvider>
 
           <ThemeProvider theme={btnType}>
-            <Button type="button" buttonOnClick={() => setType("outcome")}>
+            <Button
+              type="button"
+              style={{ alignItems: "center", justifyContent: "center" }}
+              buttonOnClick={() => setType("outcome")}
+            >
               <img src={outcomeIcon} alt="Outcome" className="icon-outcome" />
               Outcome
             </Button>
@@ -108,6 +115,7 @@ export const NewTransactionsModal = ({
           id="category"
           value={category}
           onChange={(event) => setCategory(event.target.value)}
+          required
         />
 
         <ThemeProvider theme={cta}>

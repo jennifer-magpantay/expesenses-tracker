@@ -20,11 +20,17 @@ export const ModalForm = styled.form`
     margin-bottom: 01rem;
     background: var(--color-gray-lg);
     border: none;
-  } 
+  }
 `;
 
 export const ModalTypeContainer = styled.div`
   display: flex;
-  align-itens: center;
-  justify-content: space-between;  
+  align-items: center;
+  justify-content: space-between;
+
+  button {
+    img {
+      margin-right: 01rem;
+    }
+  }
 `;

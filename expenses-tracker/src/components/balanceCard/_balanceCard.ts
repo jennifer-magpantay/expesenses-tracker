@@ -1,15 +1,23 @@
 import styled from "styled-components";
 
 export const BalanceContainer = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  @media (min-width: 600px) {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
 `;
 
 export const BalanceCard = styled.div`
-  width: 32%;
+  width: 100%;
   padding: 2rem;
-  background: var(--color-white);  
+  margin-bottom: 01rem;
+  background: var(--color-white);
+  
+  @media (min-width: 600px) {
+    width: 32%;
+    margin-bottom: unset;
+  }
 
   .amount {
     font-size: clamp(2.5rem, 4vw, 3.2rem);

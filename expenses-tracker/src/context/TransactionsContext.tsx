@@ -1,13 +1,11 @@
-import { request } from "https";
-import { Response } from "miragejs";
 import React, { useState, useEffect, createContext } from "react";
 import { dateFormat } from "../helpers/formaters";
-import { getNewId } from "../helpers/getNewId";
 import { api } from "../services/api";
 
 interface TransactionsContextProps {
   transactions: TransactionData[];
   addNewTransaction: (transaction: UserInputForm) => Promise<void>;
+  deleteTransactionById: (id: any) => Promise<void>;
 }
 
 interface TransactionsProviderProps {
@@ -15,7 +13,7 @@ interface TransactionsProviderProps {
 }
 
 interface TransactionData {
-  id: number;
+  id: string;
   title: string;
   amount: number;
   type: string;
@@ -32,16 +30,15 @@ export const TransactionsContext = createContext<TransactionsContextProps>(
 export function TransactionsProvider({ children }: TransactionsProviderProps) {
   const [transactions, setTransactions] = useState<TransactionData[]>([]);
 
-  // load server with transactions once the app is loaded
+  // axios load server with transactions once the app is loaded
   useEffect(() => {
     api
       .get("/transactions")
       .then((response) => setTransactions(response.data.transactions));
   }, []);
 
-  // adding a new transactions
+  // adding a new transactions => call the api to post the content
   async function addNewTransaction(userInputForm: UserInputForm) {
-    // call the api to post the content
     const response = await api.post("/transactions", {
       ...userInputForm,
       date: dateFormat(new Date()),
@@ -50,8 +47,23 @@ export function TransactionsProvider({ children }: TransactionsProviderProps) {
     const { transaction } = response.data;
     setTransactions([...transactions, transaction]);
   }
+
+  // deleting a transaction by id
+  // 'id : number' triggers error on route id param "/transactions/:id", id
+  async function deleteTransactionById(id: any) {
+    // const response = await api.delete("/transactions/:id", id); //DOES NOT WORK
+
+    // deleting by filtering and updating transactions
+    const filteredTransactions = transactions.filter(
+      (item: any) => item.id !== id
+    );
+    setTransactions(filteredTransactions);
+  }
+
   return (
-    <TransactionsContext.Provider value={{ transactions, addNewTransaction }}>
+    <TransactionsContext.Provider
+      value={{ transactions, addNewTransaction, deleteTransactionById }}
+    >
       {children}
     </TransactionsContext.Provider>
   );

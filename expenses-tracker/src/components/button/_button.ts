@@ -41,5 +41,5 @@ export const btnType = {
 
 export const btnClose = {
   background: "transparent",
-  border: 'none',
+  border: "none",
 };
