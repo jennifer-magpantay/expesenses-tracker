@@ -5,10 +5,11 @@ Desktop application to register and to track personal expenses.
  
 ## Preview
 
+![expenses-tracker](https://user-images.githubusercontent.com/56962997/153628545-9b5d4350-d31c-460d-aebc-3ba1e72228c1.gif)
 
 ## Technologies
 
-- React, TypeScript, styled-components.
+- ReactJS, TypeScript, Miragejs, styled-components.
 
 ## Goals
 
