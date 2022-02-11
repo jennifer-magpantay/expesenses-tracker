@@ -13,7 +13,7 @@ export const BalanceCard = styled.div`
   padding: 2rem;
   margin-bottom: 01rem;
   background: var(--color-white);
-  
+
   @media (min-width: 600px) {
     width: 32%;
     margin-bottom: unset;
@@ -37,13 +37,5 @@ export const BalanceCardHeader = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-bottom: 01rem;
-
-  .title {
-    font-weight: 700;
-  }
-
-  img {
-    width: clamp(2rem, 4vw, 2.8rem);
-  }
+  padding-bottom: 01rem;  
 `;

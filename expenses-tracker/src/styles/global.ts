@@ -155,47 +155,29 @@ span {
 	filter: var(--svg-color-gray-lg);
 }
 
-.icon-income,
-.icon-outcome {
-	width: 2rem;
+/* icons */
+.icon-income, .icon-outcome, .icon-money {
+	 width: clamp(2rem, 4vw, 2.8rem);
 }
+ .icon-income {
+    filter: var(--svg-color-primary);
+  }
 
-.icon-income {
-	filter: var(--svg-color-primary);
-}
+  .icon-outcome {
+    filter: var(--svg-color-error);
+  }
 
-.icon-outcome {
-	filter: var(--svg-color-error);
-}
+  .icon-money {
+    filter: var(--svg-color-white);
+  }
 
-.icon-money {
-	filter: var(--svg-color-white);
-}
-
-.income {
-	color: var(--color-primary);
-}
-
-.income::before {
-	content: "+";
-	margin-right: 6px;
-}
-
-.outcome {
-	color: var(--color-error);
-}
-
-.outcome::before {
-	content: "-";
-	margin-right: 6px;
-}
-
+/* title balance and modal */
 .title {
-	font-size: clamp(1.6rem, 4vw, 2rem);
-	font-family: 'Poppins', Arial, sans-serif;
-	font-weight: 700;
-	color: var(--color-gray-dk);
-}
+    font-size: clamp(1.6rem, 4vw, 2rem);
+    font-family: "Poppins", Arial, sans-serif;
+    font-weight: 700;
+    color: var(--color-gray-dk);
+  }
 
 /* modal */
 .modal--overlay {

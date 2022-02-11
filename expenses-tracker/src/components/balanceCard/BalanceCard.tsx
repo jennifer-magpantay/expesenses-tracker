@@ -6,6 +6,8 @@ import {
 import { useTransactions } from "../../hooks/useTransactions";
 import { numberFormat } from "../../helpers/formaters";
 
+import BalanceIcon from "../../assets/balance-icon.png";
+
 const CARD_LIST = [
   {
     id: 1,
@@ -65,10 +67,16 @@ export const Balance = () => {
           <BalanceCardHeader>
             <span className="title">{title}</span>
             {/* img src does not support {logo} as import - type: string */}
-            <img src={logo} alt={title} className={logoStyle} />
+            <img
+              src={type === "balance" ?  BalanceIcon  : logo}
+              alt={title}
+              className={logoStyle}
+            />
           </BalanceCardHeader>
           <span className="amount">
-            {type === "balance" ? numberFormat(calculateBalanceAmount) : numberFormat(calculateTransactionsAmount(type))}
+            {type === "balance"
+              ? numberFormat(calculateBalanceAmount)
+              : numberFormat(calculateTransactionsAmount(type))}
           </span>
         </BalanceCard>
       ))}

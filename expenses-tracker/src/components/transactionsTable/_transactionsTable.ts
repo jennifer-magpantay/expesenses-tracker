@@ -27,12 +27,30 @@ export const TableContainer = styled.table`
     /* & > tr:hover td {
       background: red;
     } */
+
+    .income {
+      color: var(--color-primary);
+    }
+
+    .income::before {
+      content: "+";
+      margin-right: 6px;
+    }
+
+    .outcome {
+      color: var(--color-error);
+    }
+
+    .outcome::before {
+      content: "-";
+      margin-right: 6px;
+    }
   }
 
   th,
   td {
     padding: 1rem;
-    
+
     @media (min-width: 600px) {
       padding: 1rem 2rem;
     }
