@@ -2,6 +2,7 @@
 
 Desktop application to register and to track personal expenses.
 
+This project is part of the Ignite - ReactJS course by Rocketseat.
  
 ## Preview
 
